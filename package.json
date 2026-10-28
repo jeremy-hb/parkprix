@@ -1,0 +1,32 @@
+{
+  "name": "parkprix",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Prix du stationnement à Paris sur une carte façon Waze — cœur partagé (web + future app Expo), site web et pipeline de données ouvertes.",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @parkprix/web",
+    "build": "npm run build -w @parkprix/web",
+    "preview": "npm run preview -w @parkprix/web",
+    "embed": "npm run build -w @parkprix/web -- --mode embed --outDir dist-embed && node scripts/build-embed.mjs",
+    "data": "node scripts/build-data.mjs",
+    "sprites": "node scripts/build-sprites.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc -p packages/core && tsc -p apps/web && tsc -p tests"
+  },
+  "devDependencies": {
+    "@maplibre/maplibre-gl-style-spec": "^26.4.4",
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/geojson": "^7946.0.16",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.2"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "license": "AGPL-3.0-only"
+}
